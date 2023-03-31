@@ -25,10 +25,12 @@ const userSchema = object({
 
 export const AddContactForm = () => {
   const dispatch = useDispatch();
-  const handleSubmit = (values, { resetForm }) => {
+
+  function handleSubmit(values, { resetForm }) {
     dispatch(addContact(values));
+    console.log(values);
     resetForm();
-  };
+  }
 
   return (
     <Formik

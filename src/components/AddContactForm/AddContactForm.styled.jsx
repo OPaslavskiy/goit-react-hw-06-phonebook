@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Form, Field, ErrorMessage } from 'formik';
 
 export const FormSection = styled(Form)`
-  margin-top: 40px;
+  margin-top: 20px;
   margin-bottom: 40px;
   background-color: #ebeef0;
   border: 1px solid black;

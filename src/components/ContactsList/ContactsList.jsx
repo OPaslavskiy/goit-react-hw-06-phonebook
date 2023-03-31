@@ -15,21 +15,26 @@ export const ContactsList = () => {
     contact.name.toLowerCase().includes(filter.toLowerCase())
   );
   return (
-    <List>
-      {filterContact.map(({ name, number, id }) => (
-        <Item key={id}>
-          <Name>{name}</Name>
-          <p>{number}</p>
-          <Btn
-            type="button"
-            onClick={() => {
-              dispatch(deleteContact(id));
-            }}
-          >
-            Delete
-          </Btn>
-        </Item>
-      ))}
-    </List>
+    <div>
+      <h2 style={{ justifyContent: 'center', display: 'flex' }}>
+        Сontact list
+      </h2>
+      <List>
+        {filterContact.map(({ name, number, id }) => (
+          <Item key={id}>
+            <Name>{name}</Name>
+            <p>{number}</p>
+            <Btn
+              type="button"
+              onClick={() => {
+                dispatch(deleteContact(id));
+              }}
+            >
+              Delete
+            </Btn>
+          </Item>
+        ))}
+      </List>
+    </div>
   );
 };

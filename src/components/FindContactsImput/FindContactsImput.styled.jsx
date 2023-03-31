@@ -27,6 +27,6 @@ export const FilterDiv = styled.div`
   border: 1px solid black;
   border-radius: 10px;
   padding: 15px;
-  width: 350px;
+  width: 550px;
   background-color: #ebeef0;
 `;

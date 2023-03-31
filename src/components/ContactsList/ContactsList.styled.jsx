@@ -4,14 +4,15 @@ export const List = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 15px;
-  width: 50%;
+  width: 550px;
   border: 1px solid black;
   border-radius: 10px;
   padding: 15px;
+  margin-top: 20px;
 
   background-color: #ebeef0;
-  /* justify-content: start;
-  align-items: center; */
+  justify-content: start;
+  align-items: flex-end;
 `;
 
 export const Item = styled.li`

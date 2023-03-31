@@ -33,20 +33,27 @@ export const AddContactForm = () => {
   }
 
   return (
-    <Formik
-      initialValues={{ nameContact: '', number: '' }}
-      onSubmit={handleSubmit}
-      validationSchema={userSchema}
-    >
-      <FormSection>
-        <TitleForForm>Name</TitleForForm>
-        <Input type="text" name="nameContact" required></Input>
-        <ErrorM name="nameContact" component="div" />
-        <TitleForForm>Phone</TitleForForm>
-        <Input type="tel" name="number" required></Input>
-        <ErrorM name="number" component="div" />
-        <Btn type="submit">Add contact</Btn>
-      </FormSection>
-    </Formik>
+    <div>
+      <h2
+        style={{ justifyContent: 'center', display: 'flex', marginTop: '30px' }}
+      >
+        Create a contact
+      </h2>
+      <Formik
+        initialValues={{ nameContact: '', number: '' }}
+        onSubmit={handleSubmit}
+        validationSchema={userSchema}
+      >
+        <FormSection>
+          <TitleForForm>Name</TitleForForm>
+          <Input type="text" name="nameContact" required></Input>
+          <ErrorM name="nameContact" component="div" />
+          <TitleForForm>Phone</TitleForForm>
+          <Input type="tel" name="number" required></Input>
+          <ErrorM name="number" component="div" />
+          <Btn type="submit">Add contact</Btn>
+        </FormSection>
+      </Formik>
+    </div>
   );
 };

@@ -6,11 +6,8 @@ const initialContacts = [
 ];
 
 const contactSlice = createSlice({
-  // Ім'я слайсу
   name: 'contact',
-  // Початковий стан редюсера слайсу
   initialState: initialContacts,
-  // Об'єкт редюсерів
   reducers: {
     addContact: {
       reducer(state, action) {
@@ -26,10 +23,11 @@ const contactSlice = createSlice({
         };
       },
     },
+    deleteContact(state, action) {
+      return state.filter(contact => contact.id !== action.payload);
+    },
   },
 });
 
-// Генератори екшенів
-export const { addContact } = contactSlice.actions;
-// Редюсер слайсу
+export const { addContact, deleteContact } = contactSlice.actions;
 export const contactReducer = contactSlice.reducer;

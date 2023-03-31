@@ -2,7 +2,6 @@ import React from 'react';
 import { Formik } from 'formik';
 import { nanoid } from 'nanoid';
 import { object, string } from 'yup';
-import { Form, Field, ErrorMessage } from 'formik';
 
 import {
   FormSection,

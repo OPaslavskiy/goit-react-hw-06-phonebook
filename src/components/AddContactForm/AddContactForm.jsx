@@ -1,7 +1,8 @@
 import React from 'react';
 import { Formik } from 'formik';
-import { nanoid } from 'nanoid';
 import { object, string } from 'yup';
+import { addContact } from 'redux/contactSlice';
+import { useDispatch } from 'react-redux';
 
 import {
   FormSection,
@@ -23,31 +24,27 @@ const userSchema = object({
 });
 
 export const AddContactForm = () => {
+  const dispatch = useDispatch();
+  const handleSubmit = (values, { resetForm }) => {
+    dispatch(addContact(values));
+    resetForm();
+  };
+
   return (
-    <div>
-      <Formik
-        initialValues={{ nameContact: '', number: '' }}
-        onSubmit={(values, { resetForm }) => {
-          //   addContact({
-          //     ...values,
-          //     id: nanoid(),
-          //   });
-          console.log('nanoid', nanoid());
-          console.log('123', values);
-          resetForm();
-        }}
-        validationSchema={userSchema}
-      >
-        <FormSection>
-          <TitleForForm>Name</TitleForForm>
-          <Input type="text" name="nameContact" required></Input>
-          <ErrorM name="nameContact" component="div" />
-          <TitleForForm>Phone</TitleForForm>
-          <Input type="tel" name="number" required></Input>
-          <ErrorM name="number" component="div" />
-          <Btn type="submit">Add contact</Btn>
-        </FormSection>
-      </Formik>
-    </div>
+    <Formik
+      initialValues={{ nameContact: '', number: '' }}
+      onSubmit={handleSubmit}
+      validationSchema={userSchema}
+    >
+      <FormSection>
+        <TitleForForm>Name</TitleForForm>
+        <Input type="text" name="nameContact" required></Input>
+        <ErrorM name="nameContact" component="div" />
+        <TitleForForm>Phone</TitleForForm>
+        <Input type="tel" name="number" required></Input>
+        <ErrorM name="number" component="div" />
+        <Btn type="submit">Add contact</Btn>
+      </FormSection>
+    </Formik>
   );
 };

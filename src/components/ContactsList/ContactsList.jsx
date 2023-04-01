@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 import { List, Item, Btn, Name } from './ContactsList.styled';
 import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/contactSlice';
-console.log('deleteContact', deleteContact);
 
 export const ContactsList = () => {
   const dispatch = useDispatch();

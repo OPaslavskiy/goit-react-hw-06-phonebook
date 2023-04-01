@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getContacts, getFilter } from '../redux/selectors';
 
 const initialFilter = '';
 

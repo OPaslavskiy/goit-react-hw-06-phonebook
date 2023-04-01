@@ -3,6 +3,8 @@ import { Formik } from 'formik';
 import { object, string } from 'yup';
 import { addContact } from 'redux/contactSlice';
 import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { getContacts } from '../../redux/selectors';
 
 import {
   FormSection,
@@ -11,6 +13,8 @@ import {
   TitleForForm,
   ErrorM,
 } from './AddContactForm.styled';
+
+import Notiflix from 'notiflix';
 
 const phoneRegExp =
   /\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/;
@@ -25,11 +29,21 @@ const userSchema = object({
 
 export const AddContactForm = () => {
   const dispatch = useDispatch();
+  const contacts = useSelector(getContacts);
 
   function handleSubmit(values, { resetForm }) {
-    dispatch(addContact(values));
-    console.log(values);
-    resetForm();
+    const isName = contacts.some(
+      contact => contact.name.toLowerCase() === values.nameContact.toLowerCase()
+    );
+
+    if (isName) {
+      Notiflix.Notify.info(`${values.nameContact} is already in contacts`);
+      return;
+    } else {
+      dispatch(addContact(values));
+      console.log(values);
+      resetForm();
+    }
   }
 
   return (
